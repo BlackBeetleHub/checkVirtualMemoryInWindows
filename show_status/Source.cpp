@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 int main() {
-	// Системна інформація
+	// system info
 	SYSTEM_INFO SystemInfo;
 	GetSystemInfo(&SystemInfo);
 	printf("dwPageSize = %d\n", SystemInfo.dwPageSize);
@@ -11,7 +11,7 @@ int main() {
 		SystemInfo.lpMinimumApplicationAddress);
 	printf("lpMaximumApplicationAddress = %#x\n",
 		SystemInfo.lpMaximumApplicationAddress);
-	// Стан пам’яті
+	// status memory
 	MEMORYSTATUSEX MemoryStatus;
 	MemoryStatus.dwLength = sizeof(MEMORYSTATUSEX);
 	GlobalMemoryStatusEx(&MemoryStatus);
@@ -21,7 +21,7 @@ int main() {
 	printf("ullullTotalPhys = %I64x\n", MemoryStatus.ullTotalPhys);
 	printf("ullTotalVirtual = %I64x\n", MemoryStatus.ullTotalVirtual);
 	printf("ullTotalPageFile = %I64x\n", MemoryStatus.ullTotalPageFile);
-	// Базова інформація про пам'ять процесору
+	// basic info about state memory 
 	MEMORY_BASIC_INFORMATION Buffer;
 	HANDLE hProcess = GetCurrentProcess();
 	DWORD dwAddress = (DWORD)SystemInfo.lpMinimumApplicationAddress;
