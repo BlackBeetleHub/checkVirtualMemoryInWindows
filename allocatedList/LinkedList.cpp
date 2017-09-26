@@ -2,7 +2,7 @@
 #include "LinkedList.h"
 #include "MemoryManager.h"
 
-void LinkedList::push_back(Data data)
+void LinkedList::push_back(Data *data)
 {
 	Node* end;
 	if (first != nullptr) {
@@ -16,10 +16,10 @@ void LinkedList::push_back(Data data)
 	}
 }
 
-Data LinkedList::pop_back()
+Data* LinkedList::pop_back()
 {
 	Node* end = getEnd();
-	Data res = end->data;
+	Data *res = end->data;
 	freeAllocatedMemory<Node>(end);
 	return res;
 }
@@ -34,6 +34,15 @@ LinkedList::LinkedList()
 
 LinkedList::~LinkedList()
 {
+	/*Node *tmp = first;
+	if (!first) {
+		return;
+	}
+	while (tmp->next != nullptr) {
+		Node *del = tmp;
+		tmp = tmp->next;
+		freeAllocatedMemory<Node>(del);
+	}*/
 }
 
 Node* LinkedList::getEnd()

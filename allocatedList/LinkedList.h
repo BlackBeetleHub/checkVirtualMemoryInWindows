@@ -14,16 +14,16 @@ public:
 
 class Node {
 public:
-	Node(Data data) : data(data), next(nullptr) { ; }
+	Node(Data *data) : data(data), next(nullptr) { ; }
 	Node* next;
-	Data data;
+	Data* data;
 };
 
 class LinkedList
 {
 public:
-	void push_back(Data data);
-	Data pop_back();
+	void push_back(Data *data);
+	Data* pop_back();
 	void reset();
 	LinkedList();
 	~LinkedList();
