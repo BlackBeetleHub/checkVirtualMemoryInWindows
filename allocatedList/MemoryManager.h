@@ -18,7 +18,8 @@ T* allocate() {
 }
 
 // delete allocate memory by address
-void freeMemory(LPVOID address) {
-	bool resFree = VirtualFree(address, 0, MEM_RELEASE);
+template<typename T>
+void freeAllocatedMemory(T* address) {
+	bool resFree = VirtualFree((LPVOID)address, 0, MEM_RELEASE);
 	assert(resFree); //throw if VirtualFree return false - bad free
 }

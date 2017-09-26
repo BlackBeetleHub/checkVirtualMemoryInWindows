@@ -1,31 +1,36 @@
-#pragma once
+﻿#pragma once
+#include<string>
 
 class Data {
-
+public:
+	
+	Data(std::string name, std::string address, std::string mobile, std::string homeMobile);
+	std::string name;
+	std::string address;
+	std::string mobile;
+	std::string homeMobile;
 };
 
 
-template<typename T>
 class Node {
 public:
-	Node(T data) : data(data), next(nullptr) { ; }
-	Node<T> *next;
-	T data;
+	Node(Data data) : data(data), next(nullptr) { ; }
+	Node* next;
+	Data data;
 };
 
-template<typename T>
 class LinkedList
 {
 public:
-	void push_back(T data);
-	T pop_back();
+	void push_back(Data data);
+	Data pop_back();
 	void reset();
 	LinkedList();
 	~LinkedList();
 private:
-	Node<T>* getEnd();
+	Node* getEnd();
 
 	size_t count;
-	Node<T>* first;
+	Node* first;
 };
 

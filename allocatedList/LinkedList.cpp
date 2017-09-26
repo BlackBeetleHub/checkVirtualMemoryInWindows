@@ -2,44 +2,55 @@
 #include "LinkedList.h"
 #include "MemoryManager.h"
 
-template <typename T>
-void LinkedList<T>::push_back(T data)
+void LinkedList::push_back(Data data)
 {
-	Node<T>* end = getEnd();
-	end->next = allocate<Node<T>>();
-	end->next->data = data;
+	Node* end;
+	if (first != nullptr) {
+		end = getEnd();
+		end->next = allocate<Node>();
+		end->next->data = data;
+	}
+	else {
+		first = allocate<Node>();
+		first->data = data;
+	}
 }
 
-template <typename T>
-T LinkedList<T>::pop_back()
+Data LinkedList::pop_back()
 {
-	Node<T>* end = getEnd();
-	T res = end->data;
-	free(end);
+	Node* end = getEnd();
+	Data res = end->data;
+	freeAllocatedMemory<Node>(end);
 	return res;
 }
 
-template <typename T>
-void LinkedList<T>::reset()
-{
-}
-template <typename T>
-LinkedList<T>::LinkedList()
+void LinkedList::reset()
 {
 }
 
-template <typename T>
-LinkedList<T>::~LinkedList()
+LinkedList::LinkedList()
 {
 }
 
-template<typename T>
-Node<T>* LinkedList<T>::getEnd()
+LinkedList::~LinkedList()
 {
-	Node<T>* tmp;
+}
+
+Node* LinkedList::getEnd()
+{
+	if (!first) {
+		return first;
+	}
+	Node* tmp;
 	tmp = first;
-	while (first->next != nullptr) {
+	while (tmp->next != nullptr) {
 		tmp = tmp->next;
 	}
 	return tmp;
+}
+
+Data::Data(std::string name, std::string address,
+	std::string mobile, std::string homeMobile) : name(name), address(address)
+	, mobile(mobile), homeMobile(homeMobile)
+{
 }

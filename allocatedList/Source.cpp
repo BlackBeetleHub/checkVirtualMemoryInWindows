@@ -1,11 +1,14 @@
 #include<iostream>
 #include"LinkedList.h"
-#include"MemoryManager.h"
+//#include"MemoryManager.h"
 
 int main() {
-	LinkedList<int> *list = allocate<LinkedList<int>>();
-	list->push_back(34);
+	LinkedList list;// = allocate<LinkedList<int>>();
+	list.push_back(Data("23", "23", "23", "33"));
+	list.push_back(Data("23", "23", "23", "33"));
+	auto tmp = list.pop_back();
+	/*list->push_back(34);
 	list->push_back(22);
-	std::cout << list->pop_back() << std::endl;
+	std::cout << list->pop_back() << std::endl;*/
 	return 0;
 }
