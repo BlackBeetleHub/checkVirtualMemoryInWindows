@@ -7,7 +7,7 @@ void LinkedList::push_back(Data *data)
 	Node* end;
 	if (first != nullptr) {
 		end = getEnd();
-		end->next = allocate<Node>();
+		end->next = allocate<Node>(); //here use virtual allocate memory
 		end->next->data = data;
 	}
 	else {
@@ -20,7 +20,7 @@ Data* LinkedList::pop_back()
 {
 	Node* end = getEnd();
 	Data *res = end->data;
-	freeAllocatedMemory<Node>(end);
+	freeAllocatedMemory<Node>(end); //here use free virtual allocate memory
 	return res;
 }
 
